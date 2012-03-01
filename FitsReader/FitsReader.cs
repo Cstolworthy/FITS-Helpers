@@ -10,9 +10,20 @@ namespace FitsReader
 {
     public class FitsReader
     {
+        public event Action ImageReady;
+
+        public void InvokeImageReady()
+        {
+            Action handler = ImageReady;
+            if (handler != null) handler();
+        }
+
         private MongoServer _mongo;
         private MongoDatabase _db;
         private MongoCollection _collection;
+        public Bitmap Image { get; set; }
+
+        public int Bias { get; set; }
 
         public FitsReader()
         {
@@ -25,10 +36,9 @@ namespace FitsReader
         }
 
 
-        public void Begin()
+        public void Parse(string fileName)
         {
-//            Fits f = new Fits("c:\\temp\\GalaxyZoo1_DR_table2.fits");
-            Fits f = new Fits("c:\\fits\\color_hst_05210_02_wfpc2_f656n_f255w_wf_sci.fits");
+            var f = new Fits(fileName);
             
             BasicHDU curHdu = f.GetHDU(0);
 
@@ -41,18 +51,9 @@ namespace FitsReader
                 {
                     if ((curHdu as ImageHDU).Tiler != null)
                     {
-                        var d = (curHdu as ImageHDU).GenerateImage();
-
-                        d.Save("c:\\temp\\test.jpg");
-
+                        Image = (curHdu as ImageHDU).GenerateImage(Bias);
+                        InvokeImageReady();
                     }
-//                    MemoryStream ms = new MemoryStream();
-//                    ms.Write(d,0,d.Length);
-//                    ms.Position = 0;
-//                    StreamReader sr = new StreamReader(ms);
-//                    sr.ReadToEnd();
-
-
                 }
                 else
                     Debugger.Break();
