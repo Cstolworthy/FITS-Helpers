@@ -83,7 +83,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FitsReader\FitsReader.csproj">
+    <ProjectReference Include="..\FitsReader\FitsReader.csproj">
       <Project>{ED58AC90-6FC9-42D4-9F58-173A0340F0C0}</Project>
       <Name>FitsReader</Name>
     </ProjectReference>

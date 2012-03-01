@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitsTest1", "FitsTest1\FitsTest1.csproj", "{8330A428-A4A9-49C3-A230-2FA462F7A79B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitsReader", "..\FitsReader\FitsReader.csproj", "{ED58AC90-6FC9-42D4-9F58-173A0340F0C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitsReader", "FitsReader\FitsReader.csproj", "{ED58AC90-6FC9-42D4-9F58-173A0340F0C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfacesAndDTO", "..\InterfacesAndDTO\InterfacesAndDTO.csproj", "{31F59868-BACE-435C-AE74-0BE3CEB9985E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfacesAndDTO", "InterfacesAndDTO\InterfacesAndDTO.csproj", "{31F59868-BACE-435C-AE74-0BE3CEB9985E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
