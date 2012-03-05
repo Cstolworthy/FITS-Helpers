@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>af13ea47-47aa-4cdc-8816-afffbf2bbc2b</ProjectGuid>
+    <ProjectGuid>{8AD38031-23A5-45D5-BBF8-BAB19FFCB5EA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FitsDisplay</RootNamespace>
@@ -36,6 +36,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.MefExtensions">
+      <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -53,8 +71,9 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Shell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -62,8 +81,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -90,6 +110,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterfacesAndDTO\InterfacesAndDTO.csproj">
+      <Project>{31F59868-BACE-435C-AE74-0BE3CEB9985E}</Project>
+      <Name>InterfacesAndDTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UiComponents\UiComponents.csproj">
+      <Project>{55F79529-AC7D-4071-A3FD-118EB098B454}</Project>
+      <Name>UiComponents</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

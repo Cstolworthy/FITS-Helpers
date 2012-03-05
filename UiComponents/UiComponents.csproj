@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>ef50bf85-6ce9-45bd-a242-f22813c79096</ProjectGuid>
+    <ProjectGuid>{55F79529-AC7D-4071-A3FD-118EB098B454}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UiComponents</RootNamespace>
@@ -31,17 +31,73 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\ThirdPartyBin\Moq.4.0.10827\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="PresentationModels\FitsImporterViewPresentationModel.cs" />
+    <Compile Include="PresentationModels\MainMenuPresentationModel.cs" />
+    <Compile Include="Modules\ShellModule.cs" />
+    <Compile Include="PresentationModels\ShellPresentationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopupWindow.xaml.cs">
+      <DependentUpon>PopupWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\FITSImporterView.xaml.cs">
+      <DependentUpon>FITSImporterView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FitsReader\FitsUtilities.csproj">
+      <Project>{ED58AC90-6FC9-42D4-9F58-173A0340F0C0}</Project>
+      <Name>FitsUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfacesAndDTO\InterfacesAndDTO.csproj">
+      <Project>{31F59868-BACE-435C-AE74-0BE3CEB9985E}</Project>
+      <Name>InterfacesAndDTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositories\Repositories.csproj">
+      <Project>{61817764-88AC-4B61-BBB3-D38F274DEF47}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\MainMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\FITSImporterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

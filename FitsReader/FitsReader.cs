@@ -27,12 +27,7 @@ namespace FitsReader
 
         public FitsReader()
         {
-            _mongo = MongoServer.Create("mongodb://127.0.0.1:27017");
-            _mongo.Connect();
 
-            _db = _mongo.GetDatabase("test");
-
-            _collection = _db.GetCollection("test");
         }
 
 
@@ -61,6 +56,32 @@ namespace FitsReader
                 curHdu = FetchHduSafely(f,ref i);
              
             } while (curHdu != null);
+        }
+
+        public ImageHDU GetFitsImageData(string fileName)
+        {
+            var f = new Fits(fileName);
+
+            BasicHDU curHdu = f.GetHDU(0);
+
+            int i = 1;
+            do
+            {
+                
+                if (curHdu is ImageHDU)
+                {
+                    var imageHdu = curHdu as ImageHDU;
+                    if (imageHdu.Tiler != null)
+                        return imageHdu;
+                }
+                else
+                    Debugger.Break();
+
+                curHdu = FetchHduSafely(f, ref i);
+
+            } while (curHdu != null);
+
+            return null;
         }
 
         private BasicHDU FetchHduSafely(Fits fits, ref int i)
