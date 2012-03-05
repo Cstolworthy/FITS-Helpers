@@ -71,14 +71,7 @@ namespace Repositories
 
             var data = hdu.Tiler.CompleteImage as Array[];
 
-            foreach (var array in data)
-            {
-                var doc = new BsonDocument();
-                doc[Constants.FitsImage.ImagesData] = new BsonArray(array);
-
-                documents.Add(doc);
-                _dataCollection.Save(doc);
-            }
+            ExtractArrays(data, documents);
 
             var linker = new BsonDocument();
             var idArray = new BsonArray();
@@ -98,8 +91,65 @@ namespace Repositories
             return linker;
         }
 
+        private void ExtractArrays(Array[] data, List<BsonDocument> documents)
+        {
+            if (data.Length < 10)
+            {
+                var linkDocument = new BsonDocument();
+                BsonArray linkedListOfDocs = new BsonArray();
 
+                foreach (var array in data)
+                {
+                    BsonArray linkedDocs = new BsonArray();
+                    foreach (var embeddedArray in array)
+                    {
+                        var doc = new BsonDocument();
+                        CompressArray((Array)embeddedArray, doc);
 
+//                        documents.Add(doc);
+                        _dataCollection.Save(doc);
 
+                        object id;
+                        Type nominalType;
+                        IIdGenerator generator;
+
+                        if(doc.GetDocumentId(out id, out nominalType,out generator))
+                        {
+                            linkedDocs.Add(id.ToString());
+                        }
+                    }
+
+                    linkedListOfDocs.Add(linkedDocs);
+
+                }
+                linkDocument[Constants.FitsImage.ImageLinks] = linkedListOfDocs;
+                _dataCollection.Save(linkDocument);
+                documents.Add(linkDocument);
+            }
+            else
+            {
+                foreach (var array in data)
+                {
+                    var doc = new BsonDocument();
+                    doc[Constants.FitsImage.ImagesData] = new BsonArray(array);
+
+                    documents.Add(doc);
+                    _dataCollection.Save(doc);
+                }
+            }
+        }
+
+        private void CompressArray(Array embeddedArray, BsonDocument document)
+        {
+            for (int i = 0; i < embeddedArray.Length; i++)
+            {
+                var value = (float)embeddedArray.GetValue(i);
+
+                if(value != 0)
+                {
+                    document[i.ToString()] = value;
+                }
+            }
+        }
     }
 }
