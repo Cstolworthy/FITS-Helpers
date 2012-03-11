@@ -31,7 +31,7 @@ namespace FitsDataImporter
             var imp = new FitsLogic.FitsImporter(tbMongoConnectionString.Text,tbFitsFile.Text);
             imp.ProgressMessage += new Action<string>(imp_ProgressMessage);
             imp.ProgressPercentage += new Action<int>(imp_ProgressParsing);
-            Task.Factory.StartNew(imp.Parse);
+            Task.Factory.StartNew(() => imp.Parse(tbCollectionName.Text));
         }
 
         void imp_ProgressParsing(int obj)

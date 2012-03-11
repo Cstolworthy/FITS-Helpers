@@ -13,7 +13,7 @@ namespace Repositories
 
             public static class Linker
             {
-                public static string CollectionName = "datalinker";
+                public static string CollectionName = "DataMapping";
                 public static string PrimaryDocumentDataKey = "data";
             }
             

@@ -63,7 +63,7 @@ namespace FitsLogicTests
 
             fi.Setup(img => img.FetchHduSafely()).Returns(imageHdu);
 
-            fi.Object.Parse();
+            fi.Object.Parse("");
 
             fakeImageHandler.Verify(fih=>fih.Handle(It.IsAny<ImageHDU>()),Times.Once());
         }

@@ -63,7 +63,7 @@ namespace FitsLogic
             return null;
         }
 
-        public void Parse()
+        public void Parse(string collectionName)
         {
             BasicHDU curUntypedHdu = FetchHduSafely();
             int lastHdu = 0;
@@ -78,7 +78,7 @@ namespace FitsLogic
                 if (curUntypedHdu is ImageHDU)
                     ImageHandler.Handle(curUntypedHdu as ImageHDU);
                 if (curUntypedHdu is BinaryTableHDU)
-                    BinaryHandler.Handle(curUntypedHdu as BinaryTableHDU);
+                    BinaryHandler.Handle(curUntypedHdu as BinaryTableHDU, collectionName );
 
                 curUntypedHdu = FetchHduSafely();
             }

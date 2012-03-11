@@ -50,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InterfacesAndDto\InterfacesAndDto.csproj">
+      <Project>{0D67A1CF-DBA5-4E89-9016-6090615A9CA8}</Project>
+      <Name>InterfacesAndDto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repositories\Repositories.csproj">
       <Project>{89840BA5-A1F9-4953-A41C-9FAC66138411}</Project>
       <Name>Repositories</Name>

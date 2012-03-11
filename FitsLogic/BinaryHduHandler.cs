@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using InterfacesAndDto;
 using nom.tam.fits;
 using Repositories;
 
@@ -33,35 +34,83 @@ namespace FitsLogic
             _repo = new FitsDataRepository(mongoConnectionString);
         }
 
-        public void Handle(BinaryTableHDU hdu)
+        public void Handle(BinaryTableHDU hdu, string collectionName)
         {
             var colNames = GetColumnNames(hdu);
-            var linkIds = new List<string>();
-            var idNames = new List<string>();
 
             var rowCount = hdu.NRows;
+
             InvokeMessage(String.Format("There are {0} rows", rowCount));
+
+            var map = GetCollectionMap(collectionName, hdu);
+
+            _repo.SavePrimaryDocument(map);
+
+            _repo.SetDataCollectionName(collectionName);
+
             for (int i = 0; i < rowCount; i++)
             {
                 var row = hdu.GetRow(i);
 
-                var id = SaveRow(colNames, row);
-
-                idNames.Add(id);
-
-                if (idNames.Count > 100000)
-                {
-                    var linkid = SaveIdsToLinker(idNames);
-                    linkIds.Add(linkid);
-                    idNames.Clear();
-                    Thread.Sleep(100);
-                }
-
+                SaveRow(colNames, row);
+                map.LastRecordIndex = i;
+                _repo.SavePrimaryDocument(map);
                 if (i % 1000 == 0)
-                    ReportProgress(rowCount, i);
+                    ReportProgress(rowCount, i, rowCount);
             }
-            
-            _repo.SavePrimaryDocument(linkIds);
+
+            map.Status = CollectionStatus.CreatingIndexes;
+
+            _repo.SavePrimaryDocument(map);
+
+            CreateIndexes(colNames);
+
+            map.Status = CollectionStatus.Ready;
+
+            _repo.SavePrimaryDocument(map);
+        }
+
+        private void CreateIndexes(List<string> colNames)
+        {
+            foreach (var colName in colNames)
+            {
+                _repo.CreateIndex(colName);
+            }
+
+        }
+
+        private static CollectionMap GetCollectionMap(string collectionName, BinaryTableHDU hdu)
+        {
+            var map = new CollectionMap
+                          {
+                              Author = hdu.Author,
+                              BitPix = hdu.BitPix,
+                              BScale = hdu.BScale,
+                              BUnit = hdu.BUnit,
+                              BZero = hdu.BZero,
+                              CollectionName = collectionName,
+                              CreationDate = hdu.CreationDate,
+                              Epoch = hdu.Epoch,
+                              Equinox = hdu.Equinox,
+                              FileOffset = hdu.FileOffset,
+                              GroupCount = hdu.GroupCount,
+                              InsertDate = DateTime.UtcNow,
+                              Instrument = hdu.Instrument,
+                              MaximumValue = hdu.MaximumValue,
+                              MinimumValue = hdu.MinimumValue,
+                              Object = hdu.Object,
+                              ObservationDate = hdu.ObservationDate,
+                              Observer = hdu.Observer,
+                              Origin = hdu.Origin,
+                              ParameterCount = hdu.ParameterCount,
+                              Reference = hdu.Reference,
+                              Rewriteable = hdu.Rewriteable,
+                              Size = hdu.Size,
+                              Status = CollectionStatus.Inserting,
+                              Telescope = hdu.Telescope
+                          };
+
+            return map;
         }
 
         private string SaveIdsToLinker(List<string> idNames)
@@ -69,11 +118,11 @@ namespace FitsLogic
             return _repo.SaveLinker(idNames);
         }
 
-        private void ReportProgress(int rowCount, int i)
+        private void ReportProgress(int rowCount, int i, int count)
         {
             var cnt = (Convert.ToDecimal(i) / Convert.ToDecimal(rowCount)) * 100;
             InvokeProgress(Convert.ToInt32(cnt));
-            InvokeMessage(string.Format("Processed Row: {0}", i));
+            InvokeMessage(string.Format("Processed Row: {0} of {1}", i, count));
         }
 
         private string SaveRow(List<string> colNames, Array row)

@@ -37,6 +37,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tbProgressReport = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbCollectionName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblMongo
@@ -58,7 +60,7 @@
             // 
             // btnBrowseFits
             // 
-            this.btnBrowseFits.Location = new System.Drawing.Point(169, 55);
+            this.btnBrowseFits.Location = new System.Drawing.Point(211, 55);
             this.btnBrowseFits.Name = "btnBrowseFits";
             this.btnBrowseFits.Size = new System.Drawing.Size(75, 23);
             this.btnBrowseFits.TabIndex = 2;
@@ -68,7 +70,7 @@
             // 
             // tbFitsFile
             // 
-            this.tbFitsFile.Location = new System.Drawing.Point(63, 58);
+            this.tbFitsFile.Location = new System.Drawing.Point(105, 58);
             this.tbFitsFile.Name = "tbFitsFile";
             this.tbFitsFile.Size = new System.Drawing.Size(100, 20);
             this.tbFitsFile.TabIndex = 3;
@@ -98,7 +100,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(15, 164);
+            this.progressBar1.Location = new System.Drawing.Point(15, 196);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(366, 23);
             this.progressBar1.Step = 1;
@@ -106,17 +108,35 @@
             // 
             // tbProgressReport
             // 
-            this.tbProgressReport.Location = new System.Drawing.Point(15, 84);
+            this.tbProgressReport.Location = new System.Drawing.Point(15, 116);
             this.tbProgressReport.Multiline = true;
             this.tbProgressReport.Name = "tbProgressReport";
             this.tbProgressReport.Size = new System.Drawing.Size(366, 74);
             this.tbProgressReport.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Collection Name:";
+            // 
+            // tbCollectionName
+            // 
+            this.tbCollectionName.Location = new System.Drawing.Point(105, 84);
+            this.tbCollectionName.Name = "tbCollectionName";
+            this.tbCollectionName.Size = new System.Drawing.Size(100, 20);
+            this.tbCollectionName.TabIndex = 8;
             // 
             // FitsImporter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(393, 262);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbCollectionName);
             this.Controls.Add(this.tbProgressReport);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnImport);
@@ -143,6 +163,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox tbProgressReport;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbCollectionName;
     }
 }
 
