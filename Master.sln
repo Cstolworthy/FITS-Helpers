@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfacesAndDto", "Interfa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Website", "Website\Website.csproj", "{450FD39E-4435-4AA1-AC98-6B894BAAE72E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{0714E887-9A4E-4A87-BD57-BF78FA7FC24D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitsImageGenerator", "FitsImageGenerator\FitsImageGenerator.csproj", "{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Master1.vsmdi
@@ -119,11 +123,23 @@ Global
 		{450FD39E-4435-4AA1-AC98-6B894BAAE72E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{450FD39E-4435-4AA1-AC98-6B894BAAE72E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{450FD39E-4435-4AA1-AC98-6B894BAAE72E}.Release|x86.ActiveCfg = Release|Any CPU
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Debug|x86.ActiveCfg = Debug|x86
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Debug|x86.Build.0 = Debug|x86
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Release|Any CPU.ActiveCfg = Release|x86
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Release|Mixed Platforms.Build.0 = Release|x86
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Release|x86.ActiveCfg = Release|x86
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C54742B0-A1D1-41B9-8601-CEF3A9A01730} = {679F3ADE-F058-4935-8FE4-72DE41D0BC8B}
+		{AA13A7B8-5DC5-4709-846C-76E7C8542B94} = {0714E887-9A4E-4A87-BD57-BF78FA7FC24D}
+		{E7731C8B-9AAF-4F65-A69F-9FA34D8C9CBF} = {0714E887-9A4E-4A87-BD57-BF78FA7FC24D}
 	EndGlobalSection
 EndGlobal

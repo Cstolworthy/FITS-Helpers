@@ -63,7 +63,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\Services\MapHandler.ashx.cs">
+      <DependentUpon>MapHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -73,6 +77,8 @@
     <Content Include="Content\Styles\Grids.css" />
     <Content Include="Global.asax" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Maps\Index.aspx" />
+    <Content Include="Views\Maps\Overview.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -98,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Main.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Services\MapHandler.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
