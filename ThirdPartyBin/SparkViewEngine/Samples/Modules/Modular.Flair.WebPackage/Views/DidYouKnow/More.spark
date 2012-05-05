@@ -1,4 +1,0 @@
-<viewdata model="Modular.Flair.WebPackage.Models.Trivia"/>
-<h2>Did you know?</h2>
-<p>${Model.Teaser}</p>
-<p>${Model.Details}</p>
