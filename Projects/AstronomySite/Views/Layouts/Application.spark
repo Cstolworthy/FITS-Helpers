@@ -1,0 +1,28 @@
+﻿<use master="Html"/>
+
+<content name="head">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <title>
+    <use content="Title"/>
+  </title>
+  <use content="Head"/>
+</content>
+<content name="body">
+  <div id="doc" class="yui-t7">
+    <div id="hd" role="banner">
+      <use content="Banner"/>
+    </div>
+    <div id="bd" role="main">
+      <div class="yui-g">
+        <use content="Main"/>
+      </div>
+    </div>
+    <div id="ft" role="contentinfo">
+      <use content="Footer"/>
+    </div>
+  </div>
+</content>
+<content name="afterBody">
+  <use content="AfterBody" />
+</content>

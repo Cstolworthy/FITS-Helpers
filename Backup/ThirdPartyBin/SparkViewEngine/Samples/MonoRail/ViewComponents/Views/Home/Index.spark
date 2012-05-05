@@ -1,6 +1,0 @@
-﻿<h2>Demonstration of view components</h2>
-<use namespace="ViewComponents.Models"/>
-<viewdata shipto="Account"/>
-<div>
-	<MailingAddress Caption="'Ship To:'" Address="shipto"/>
-</div>
