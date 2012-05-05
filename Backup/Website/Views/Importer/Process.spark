@@ -1,0 +1,27 @@
+﻿<viewdata model=" Objects.Website.Model.ProcessModel"/>
+<content name="Main">
+  <div id="contentDiv"></div>
+</content>
+
+<content name="AfterBody">
+  <script type="text/javascript">
+    var replaceContent = function(content)
+    {
+    $("#contentDiv").replaceWith(content);
+    }
+
+    var selectFile = function()
+    {
+    var selectedFile = $("#fileNames").val();
+    window.location = basePath + "/Importer/Designate?file="+escape(selectedFile);
+    }
+
+    $(document).ready(function() {
+    window.RenderControl("usercontrols\\FilesToProcess", replaceContent);
+    });
+
+
+  </script>
+
+</content>
+

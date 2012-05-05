@@ -1,7 +1,0 @@
-﻿<content name="sidebar">
-<div>
-	<h3>${caption}</h3>
-	<div><render/></div>	
-</div>
-</content>
- 

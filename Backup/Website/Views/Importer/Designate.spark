@@ -1,0 +1,13 @@
+﻿<viewdata model="Interfaces.Website.Model.IDesignateModel" />
+<content name="Main">
+  <div>
+    <h2>You selected: ${ViewData.Model.SelectedFile}</h2>
+    <br/>
+    <br/>
+
+    <for each="var column in ViewData.Model.GetColumnNames()">
+      ${column}
+    </for>
+    
+  </div>
+</content>
