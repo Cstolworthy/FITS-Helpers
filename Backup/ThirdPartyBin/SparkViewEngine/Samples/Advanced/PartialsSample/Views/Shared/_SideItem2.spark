@@ -1,6 +1,0 @@
-﻿<content name="sidebar">
-<div>
-	<h3><render section="caption">Default Title</render></h3>
-	<div><render/></div>	
-</div>
-</content>

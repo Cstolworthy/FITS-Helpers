@@ -1,6 +1,0 @@
-﻿
-
-<content var="caption"><render/></content>
-
-<li>${Html.ActionLink(caption, action, controller)}</li>
-

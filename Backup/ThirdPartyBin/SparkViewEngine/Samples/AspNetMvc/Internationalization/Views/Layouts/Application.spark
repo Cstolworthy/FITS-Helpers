@@ -1,5 +1,0 @@
-﻿<use master="Andreas08"/>
-
-<!-- this layout is wrapped in 'Andreas08.spark', and simply places the actual view -->
-<use content="view"/>
-

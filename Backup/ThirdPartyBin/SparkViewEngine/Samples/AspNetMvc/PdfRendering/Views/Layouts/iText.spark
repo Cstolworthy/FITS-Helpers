@@ -1,3 +1,0 @@
-﻿<itext creationdate="${DateTime.Now}" producer="Spark.Reporting">
-	<use content="view"/>
-</itext>
