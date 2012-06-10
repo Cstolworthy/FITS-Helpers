@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BA08B4F8-E225-4A12-81E9-9215D3E8CB0F}</ProjectGuid>
+    <ProjectGuid>{95C484FB-9D32-4DFE-8686-88429F127C81}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FitsLogic</RootNamespace>
-    <AssemblyName>FitsLogic</AssemblyName>
+    <RootNamespace>MapperTests</RootNamespace>
+    <AssemblyName>MapperTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,30 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSharpFITS_v1.1">
-      <HintPath>..\..\ThirdPartyBin\CSharpFITS_v1.1_dll\CSharpFITS_v1.1.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\ThirdPartyBin\log4net-1.2.11\bin\net\4.0\release\log4net.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions.cs" />
-    <Compile Include="FitsFileSystemAccess.cs" />
-    <Compile Include="FitsFileImporter.cs" />
+    <Compile Include="FitsMapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Interfaces\Interfaces.csproj">
-      <Project>{8147AEAA-23BF-4BB9-9D22-52889A197593}</Project>
-      <Name>Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Logging\Logging.csproj">
-      <Project>{D6F1AB50-3204-4F20-8D2A-D2FCC7DB1EC3}</Project>
-      <Name>Logging</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

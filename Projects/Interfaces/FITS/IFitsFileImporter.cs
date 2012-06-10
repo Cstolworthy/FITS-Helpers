@@ -1,4 +1,6 @@
-﻿namespace Interfaces.FITS
+﻿using Interfaces.DTO;
+
+namespace Interfaces.FITS
 {
     public interface IFitsFileImporter
     {

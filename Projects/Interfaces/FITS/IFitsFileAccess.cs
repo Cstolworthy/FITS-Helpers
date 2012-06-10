@@ -5,6 +5,7 @@ namespace Interfaces.FITS
 {
     public interface IFitsFileAccess
     {
-        List<FileInfo> GetUnprocessedFiles(string path);
+        List<FileInfo> GetFilesThatAreNotWorking(string path);
+        List<FileInfo> GetFilesThatAreNotFound(string path);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Interfaces
+﻿namespace Interfaces.DTO
 {
     public interface IFileImportOptions
     {

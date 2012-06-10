@@ -18,11 +18,11 @@ namespace FitsImporterTests
 
             const int filesInProcess = 3;
 
-            var importer = new FitsFilesystemAccess();
+            var importer = new FitsFileSystemAccess();
 
             var tempFiles = CreateInprocessFiles(filesToCreate, filesInProcess);
 
-            List<FileInfo> files = importer.GetUnprocessedFiles(tempFiles.Item1.FullName);
+            List<FileInfo> files = importer.GetFilesThatAreNotWorking(tempFiles.Item1.FullName);
 
             Assert.AreEqual(filesToCreate - filesInProcess, files.Count);
         }
@@ -51,7 +51,7 @@ namespace FitsImporterTests
 
             for (int i = 0; i < nrFilesInProcess; i++)
             {
-                File.Create(Path.Combine(tempDir, randomFileNames[i] + FitsFilesystemAccess.WorkingExtension));
+                File.Create(Path.Combine(tempDir, randomFileNames[i] + FitsFileSystemAccess.WorkingExtension));
             }
 
 

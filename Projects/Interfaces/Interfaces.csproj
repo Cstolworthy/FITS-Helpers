@@ -34,19 +34,23 @@
     <Reference Include="CSharpFITS_v1.1">
       <HintPath>..\ThirdPartyBin\CSharpFITS_v1.1_dll\CSharpFITS_v1.1.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\ThirdPartyBin\bson\MongoDB.Bson.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\IFitsImporterDataAccess.cs" />
+    <Compile Include="DTO\IFileImportRequest.cs" />
     <Compile Include="FITS\IFitsFileAccess.cs" />
     <Compile Include="FITS\IFitsFileImporter.cs" />
-    <Compile Include="FITS\IFitsRepository.cs" />
-    <Compile Include="IFileImportOptions.cs" />
+    <Compile Include="FITS\IFitsMapper.cs" />
+    <Compile Include="Marker\IDataAccess.cs" />
+    <Compile Include="DTO\IFileImportOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Marker\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
