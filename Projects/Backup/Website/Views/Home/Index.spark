@@ -1,6 +1,0 @@
-﻿<content name="Main">
-  <p>${Utilities.WebHelper.BasePath}</p>
-  <h2>
-    <a href="/Importer">View Upload Content</a>
-  </h2>
-</content>

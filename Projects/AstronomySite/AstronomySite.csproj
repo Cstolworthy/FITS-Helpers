@@ -79,15 +79,26 @@
     <Folder Include="Content\themes\base\styles\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Import\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\Home\Index.spark" />
-    <None Include="Views\Layouts\Application.spark" />
+    <None Include="Views\Home\Index.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Views\Layouts\Application.spark">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Views\Layouts\Html.spark" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{8B26F03B-2258-40EC-84CC-76FD37D1CD0B}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

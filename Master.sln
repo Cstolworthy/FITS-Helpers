@@ -3,7 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstronomySite", "Projects\AstronomySite\AstronomySite.csproj", "{EABCD8CC-CAAB-43EB-9C52-08BCB4B6D2DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Projects\Interfaces\Interfaces.csproj", "{8147AEAA-23BF-4BB9-9D22-52889A197593}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{85F6A72C-432D-4019-83CD-DC8C38B67400}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{27FA5FA7-4B42-4E2C-81C4-24AD8217E30C}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		Master.vsmdi = Master.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitsImporterTests", "Projects\Tests\FitsImporterTests\FitsImporterTests.csproj", "{236754CE-39C0-43A9-A6F0-C6E235480299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitsLogic", "Projects\Logic\FitsLogic\FitsLogic.csproj", "{BA08B4F8-E225-4A12-81E9-9215D3E8CB0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Projects\Utilities\Utilities.csproj", "{8B26F03B-2258-40EC-84CC-76FD37D1CD0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "Projects\Logging\Logging.csproj", "{D6F1AB50-3204-4F20-8D2A-D2FCC7DB1EC3}"
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Master.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -13,8 +35,32 @@ Global
 		{EABCD8CC-CAAB-43EB-9C52-08BCB4B6D2DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EABCD8CC-CAAB-43EB-9C52-08BCB4B6D2DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EABCD8CC-CAAB-43EB-9C52-08BCB4B6D2DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8147AEAA-23BF-4BB9-9D22-52889A197593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8147AEAA-23BF-4BB9-9D22-52889A197593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8147AEAA-23BF-4BB9-9D22-52889A197593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8147AEAA-23BF-4BB9-9D22-52889A197593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{236754CE-39C0-43A9-A6F0-C6E235480299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{236754CE-39C0-43A9-A6F0-C6E235480299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{236754CE-39C0-43A9-A6F0-C6E235480299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{236754CE-39C0-43A9-A6F0-C6E235480299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA08B4F8-E225-4A12-81E9-9215D3E8CB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA08B4F8-E225-4A12-81E9-9215D3E8CB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA08B4F8-E225-4A12-81E9-9215D3E8CB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA08B4F8-E225-4A12-81E9-9215D3E8CB0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B26F03B-2258-40EC-84CC-76FD37D1CD0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B26F03B-2258-40EC-84CC-76FD37D1CD0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B26F03B-2258-40EC-84CC-76FD37D1CD0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B26F03B-2258-40EC-84CC-76FD37D1CD0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6F1AB50-3204-4F20-8D2A-D2FCC7DB1EC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6F1AB50-3204-4F20-8D2A-D2FCC7DB1EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6F1AB50-3204-4F20-8D2A-D2FCC7DB1EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6F1AB50-3204-4F20-8D2A-D2FCC7DB1EC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{27FA5FA7-4B42-4E2C-81C4-24AD8217E30C} = {85F6A72C-432D-4019-83CD-DC8C38B67400}
+		{236754CE-39C0-43A9-A6F0-C6E235480299} = {85F6A72C-432D-4019-83CD-DC8C38B67400}
 	EndGlobalSection
 EndGlobal

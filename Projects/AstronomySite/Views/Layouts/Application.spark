@@ -2,8 +2,8 @@
 
 <content name="head">
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css"></link>
+    <title>
     <use content="Title"/>
   </title>
   <use content="Head"/>
@@ -24,5 +24,6 @@
   </div>
 </content>
 <content name="afterBody">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <use content="AfterBody" />
 </content>

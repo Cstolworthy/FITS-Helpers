@@ -4,10 +4,8 @@ using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
-using AstronomySite;
 
-
-namespace Website
+namespace AstronomySite
 {
     public class UnityControllerFactory : IControllerFactory
     {
@@ -15,25 +13,27 @@ namespace Website
 
         public IController CreateController(RequestContext requestContext, string controllerName)
         {
-            var containerAccessor =
-                requestContext.HttpContext.ApplicationInstance as IContainerAccessor;
-            CapitalizeControllerName(ref controllerName);
-            Assembly currentAssembly = Assembly.GetExecutingAssembly();
-            var controllerTypes = from t in currentAssembly.GetTypes()
-                                  where t.Name.ToLower().Contains(controllerName.ToLower() + "controller")
-                                  select t;
+           
+                var containerAccessor =
+                    requestContext.HttpContext.ApplicationInstance as IContainerAccessor;
+                NormalizeControllerName(ref controllerName);
+                Assembly currentAssembly = Assembly.GetExecutingAssembly();
+                var controllerTypes = from t in currentAssembly.GetTypes()
+                                      where t.Name.ToLower().Contains(controllerName.ToLower() + "controller")
+                                      select t;
 
-            if (controllerTypes.Count() > 0)
-            {
-                return containerAccessor.Container.Resolve(controllerTypes.First(), "") as IController;
-            }
-            else
-            {
-                return null;
-            }
+                if (controllerTypes.Count() > 0 && containerAccessor != null)
+                {
+                    return containerAccessor.Container.Resolve(controllerTypes.First(), "") as IController;
+                }
+
+//           
+//            requestContext.HttpContext.Response.StatusCode = 404;
+//            requestContext.HttpContext.Response.End();
+            return null;
         }
 
-        private void CapitalizeControllerName(ref string controllerName)
+        private static void NormalizeControllerName(ref string controllerName)
         {
             if (String.IsNullOrWhiteSpace(controllerName))
                 return;
@@ -49,9 +49,13 @@ namespace Website
             return SessionStateBehavior.Default;
         }
 
+        // ReSharper disable RedundantAssignment
         public void ReleaseController(IController controller)
+        // ReSharper restore RedundantAssignment
         {
+            // ReSharper disable RedundantAssignment
             controller = null;
+            // ReSharper restore RedundantAssignment
         }
 
         #endregion

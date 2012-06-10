@@ -3,12 +3,10 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Microsoft.Practices.Unity;
 using Spark.Web.Mvc;
-using Website;
 
 namespace AstronomySite
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
+
 
     public class MvcApplication : System.Web.HttpApplication, IContainerAccessor
     {
@@ -82,6 +80,7 @@ namespace AstronomySite
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
+            routes.MapRoute("404-PageNotFound","{*url}", new { controller = "StaticContent", action = "PageNotFound" });
         }
 
         protected void Application_Start()
