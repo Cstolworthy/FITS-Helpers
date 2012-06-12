@@ -34,6 +34,9 @@
     <Reference Include="CSharpFITS_v1.1">
       <HintPath>..\ThirdPartyBin\CSharpFITS_v1.1_dll\CSharpFITS_v1.1.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\ThirdPartyBin\bson\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -46,6 +49,7 @@
     <Compile Include="FITS\IFitsFileAccess.cs" />
     <Compile Include="FITS\IFitsFileImporter.cs" />
     <Compile Include="FITS\IFitsMapper.cs" />
+    <Compile Include="IContainerAccessor.cs" />
     <Compile Include="Marker\IDataAccess.cs" />
     <Compile Include="DTO\IFileImportOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -14,6 +14,13 @@ namespace DataAccess
         private MongoDatabase _database;
         private MongoCollection<IFileImportRequest> _importRequestCollection;
 
+        private static bool _registered = false;
+        public static void RegisterBsonTypes()
+        {
+#warning this should really be somewhere else
+            BsonClassMap.RegisterClassMap<FileImportRequest>();
+        }
+
         public FitsImporterDataAccess(string mongoConnection)
         {
             _mongo = MongoServer.Create(mongoConnection);
@@ -22,7 +29,14 @@ namespace DataAccess
             _database = _mongo.GetDatabase(Constants.Database.Name);
             _importRequestCollection = _database.GetCollection<IFileImportRequest>(Constants.FitsImporter.ImportRequestCollectionName);
 
-            BsonClassMap.RegisterClassMap<FileImportRequest>();
+            lock (typeof(FitsImporterDataAccess))
+            {
+                if (!_registered)
+                {
+                    _registered = true;
+                    RegisterBsonTypes();
+                }
+            }
         }
 
         public void Save(IFileImportRequest fileRequest)

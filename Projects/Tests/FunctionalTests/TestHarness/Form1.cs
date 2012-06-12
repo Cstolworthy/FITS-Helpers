@@ -34,7 +34,7 @@ namespace TestHarness
             foreach (var fileImportRequest in imports)
             {
                 SerializeAndShow(fileImportRequest);
-                textBox1.Text += "******************************************" + "********";
+                textBox1.Text += "******************************************";
                 textBox1.Text += Environment.NewLine;
             }
         }
