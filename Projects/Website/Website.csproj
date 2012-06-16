@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\packages\Castle.Windsor.3.0.0.4001\lib\net40\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\ThirdPartyBin\Prism\Bin\Desktop\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
@@ -56,6 +62,7 @@
       <HintPath>..\..\packages\Microsoft.Web.Optimization.1.0.0-beta\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -63,9 +70,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Installers\ControllersInstaller.cs" />
+    <Compile Include="Models\FitsWaitingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnityControllerFactory.cs" />
-    <Compile Include="UnitySetup.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="WindsorControllerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -115,6 +128,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Import\Index.aspx" />
+    <Content Include="Views\Import\MarkReadyForImport.aspx" />
     <Content Include="Views\Import\Waiting.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -128,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -137,6 +150,10 @@
     <Content Include="Views\Shared\Main.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{0E1F5CCE-EF81-40EF-97BA-0981A6F11C38}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{F25DE0E5-C3D5-40CA-8CE8-D29CEBB8144C}</Project>
       <Name>DataAccess</Name>
@@ -145,14 +162,20 @@
       <Project>{8147AEAA-23BF-4BB9-9D22-52889A197593}</Project>
       <Name>Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Logic\FitsLogic\FitsLogic.csproj">
-      <Project>{BA08B4F8-E225-4A12-81E9-9215D3E8CB0F}</Project>
-      <Name>FitsLogic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Mappers\Mappers.csproj">
       <Project>{85991D87-C059-4C86-8E72-7116A87F1AC3}</Project>
       <Name>Mappers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{8B26F03B-2258-40EC-84CC-76FD37D1CD0B}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

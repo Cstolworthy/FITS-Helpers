@@ -1,41 +1,58 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Interfaces;
+using Castle.MicroKernel.Registration;
+using Castle.Windsor;
+using Castle.Windsor.Installer;
 using Microsoft.Practices.Unity;
+using IContainerAccessor = Interfaces.IContainerAccessor;
 
 namespace Website
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication, IContainerAccessor
+    public class MvcApplication : System.Web.HttpApplication
     {
-        private static IUnityContainer _container;
+        private static IWindsorContainer container;
+
+        static public string AssemblyDirectory
+        {
+            get
+            {
+                var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+
+                var uri = new UriBuilder(codeBase);
+
+                var path = Uri.UnescapeDataString(uri.Path);
+
+                return Path.GetDirectoryName(path);
+            }
+        }
+
+        private static void BootstrapContainer()
+        {
+            container = new WindsorContainer();
+            container.Install(FromAssembly.This());
+            container.Install(FromAssembly.InDirectory(new AssemblyFilter(AssemblyDirectory)));
+
+            var controllerFactory = new WindsorControllerFactory(container.Kernel);
+            ControllerBuilder.Current.SetControllerFactory(controllerFactory);
+        }
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
         }
 
-        private static void InitContainer()
-        {
-            if (_container == null)
-            {
-                _container = new UnityContainer();
-                UnitySetup.SetupDependencies(_container);
-            }
-
-            // Register the relevant types for the 
-            // container here through classes or configuration
-            //            _container.RegisterType<IMessageService, MessageService>();
-        }
-
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
 
             routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -48,34 +65,26 @@ namespace Website
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
+        }
+
+        protected void Application_End()
+        {
+            container.Dispose();
         }
 
         protected void Application_Start()
         {
-            InitContainer();
+
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
             BundleTable.Bundles.RegisterTemplateBundles();
-            ControllerBuilder.Current.SetControllerFactory(typeof(UnityControllerFactory));
+            BootstrapContainer();
         }
 
-        public static IUnityContainer Container
-        {
-            get
-            {
-                return _container;
-            }
-        }
-
-        /// <summary>
-        /// Returns the Unity container of the application 
-        /// </summary>
-        IUnityContainer IContainerAccessor.Container
-        {
-            get { return Container; }
-        }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DataAccess.Properties;
 using Interfaces.DataAccess;
 using Interfaces.DTO;
 using MongoDB.Bson.Serialization;
@@ -21,9 +22,9 @@ namespace DataAccess
             BsonClassMap.RegisterClassMap<FileImportRequest>();
         }
 
-        public FitsImporterDataAccess(string mongoConnection)
+        public FitsImporterDataAccess()
         {
-            _mongo = MongoServer.Create(mongoConnection);
+            _mongo = MongoServer.Create(Settings.Default.MongoConnection);
             _mongo.Connect();
 
             _database = _mongo.GetDatabase(Constants.Database.Name);

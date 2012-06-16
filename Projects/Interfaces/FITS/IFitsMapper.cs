@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Interfaces.DTO;
+using Interfaces.Marker;
 
 namespace Interfaces.FITS
 {
-    public interface IFitsMapper 
+    public interface IFitsMapper : IMapper
     {
         void CreateNewImport(IFileImportOptions hdu);
         IEnumerable<IFileImportOptions> GetFilesWaitingImport();

@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using FitsLogic;
-using Interfaces;
+using BusinessLogic.FITS;
 using Interfaces.DTO;
 using Interfaces.FITS;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using nom.tam.fits;
 
 namespace FitsImporterTests
 {

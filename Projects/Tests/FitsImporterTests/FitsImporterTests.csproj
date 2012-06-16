@@ -54,13 +54,13 @@
     <Compile Include="ImporterTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{0E1F5CCE-EF81-40EF-97BA-0981A6F11C38}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Interfaces\Interfaces.csproj">
       <Project>{8147AEAA-23BF-4BB9-9D22-52889A197593}</Project>
       <Name>Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Logic\FitsLogic\FitsLogic.csproj">
-      <Project>{BA08B4F8-E225-4A12-81E9-9215D3E8CB0F}</Project>
-      <Name>FitsLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
