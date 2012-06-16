@@ -4,7 +4,7 @@ using Interfaces.Marker;
 
 namespace Interfaces.FITS
 {
-    public interface IFitsFileAccess : IService
+    public interface IFitsFileSystemAccess : IService
     {
         List<FileInfo> GetFilesThatAreNotWorking(string path);
         List<FileInfo> GetFilesThatAreNotFound(string path);

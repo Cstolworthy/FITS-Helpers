@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using Interfaces.FITS;
 using Website.Models;
 using Website.Properties;
@@ -8,12 +10,14 @@ namespace Website.Controllers
     public class ImportController : Controller
     {
         private readonly IFitsMapper _fitsMapper;
-        private IFitsFileAccess _fileAccess;
+        private IFitsFileSystemAccess _fileSystemAccess;
+        private IFitsManager _manager;
 
-        public ImportController(IFitsMapper fitsMapper, IFitsFileAccess fileAccess)
+        public ImportController(IFitsMapper fitsMapper, IFitsFileSystemAccess fileSystemAccess, IFitsManager manager)
         {
             _fitsMapper = fitsMapper;
-            _fileAccess = fileAccess;
+            _fileSystemAccess = fileSystemAccess;
+            _manager = manager;
         }
 
         public ActionResult Index()
@@ -23,7 +27,7 @@ namespace Website.Controllers
 
         public ActionResult Waiting()
         {
-            var files = _fileAccess.GetFilesThatAreNotFound(Settings.Default.FitsPath);
+            var files = _fileSystemAccess.GetFilesThatAreNotFound(Settings.Default.FitsPath);
 
             FitsWaitingModel model = new FitsWaitingModel();
             model.Files = files;
@@ -33,7 +37,19 @@ namespace Website.Controllers
 
         public ActionResult MarkReadyForImport()
         {
-            return View();
+            var fileName = Request.QueryString["fileid"];
+
+            var files = _fileSystemAccess.GetFilesThatAreNotFound(Settings.Default.FitsPath);
+
+            var theFile = files.Where(f => f.Name == fileName).FirstOrDefault();
+
+            var columns = _manager.GetColumnHeaders(theFile);
+
+            MarkReadyForImportModel model = new MarkReadyForImportModel();
+
+            model.ColumnNames = columns;
+
+            return View(model);
         }
     }
 }

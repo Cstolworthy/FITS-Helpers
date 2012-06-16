@@ -18,7 +18,7 @@ namespace FitsImporterTests
 
             const int filesInProcess = 3;
 
-            var importer = new FitsFileSystemAccess();
+            var importer = new FitsFileSystemSystemAccess();
 
             var tempFiles = CreateInprocessFiles(filesToCreate, filesInProcess);
 
@@ -51,7 +51,7 @@ namespace FitsImporterTests
 
             for (int i = 0; i < nrFilesInProcess; i++)
             {
-                File.Create(Path.Combine(tempDir, randomFileNames[i] + FitsFileSystemAccess.WorkingExtension));
+                File.Create(Path.Combine(tempDir, randomFileNames[i] + FitsFileSystemSystemAccess.WorkingExtension));
             }
 
 

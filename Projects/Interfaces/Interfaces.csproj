@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\IFitsImporterDataAccess.cs" />
     <Compile Include="DTO\IFileImportRequest.cs" />
-    <Compile Include="FITS\IFitsFileAccess.cs" />
+    <Compile Include="FITS\IFitsFileSystemAccess.cs" />
     <Compile Include="FITS\IFitsFileImporter.cs" />
     <Compile Include="FITS\IFitsManager.cs" />
     <Compile Include="FITS\IFitsMapper.cs" />

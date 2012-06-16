@@ -13,7 +13,7 @@ namespace FitsImporterTests
         [TestMethod]
         public void TestFitsFileSystemImporterGetsUnprocessedFiles()
         {
-            var mockFileAccess = new Mock<IFitsFileAccess>();
+            var mockFileAccess = new Mock<IFitsFileSystemAccess>();
             var mockFitsRepository = new Mock<IFitsMapper>();
 
             var mockFileImport = new Mock<IFileImportOptions>();
@@ -32,7 +32,7 @@ namespace FitsImporterTests
         [TestMethod]
         public void TestWhenBeginImportIsCalledTheRepositoryIsNotifiedOfNewImport()
         {
-            var mockFileAccess = new Mock<IFitsFileAccess>();
+            var mockFileAccess = new Mock<IFitsFileSystemAccess>();
             var mockFitsRepository = new Mock<IFitsMapper>();
 
 
@@ -51,7 +51,7 @@ namespace FitsImporterTests
         [TestMethod]
         public void TestWhenScanForNewFilesIsCalledTheCorrectMethodIsUsedOnFileAccess()
         {
-            var mockFileAccess = new Mock<IFitsFileAccess>();
+            var mockFileAccess = new Mock<IFitsFileSystemAccess>();
             var mockFitsRepository = new Mock<IFitsMapper>();
 
 

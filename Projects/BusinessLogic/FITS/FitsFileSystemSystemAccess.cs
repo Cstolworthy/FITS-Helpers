@@ -6,7 +6,7 @@ using Interfaces.FITS;
 
 namespace FitsLogic
 {
-    public class FitsFileSystemAccess : IFitsFileAccess
+    public class FitsFileSystemSystemAccess : IFitsFileSystemAccess
     {
         public const string WorkingExtension = ".wrk";
         public const string FoundExtension = ".fnd";

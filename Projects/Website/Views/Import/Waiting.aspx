@@ -7,7 +7,7 @@
        {
     %>
 
-    <a href=""><%=file.Name %></a>
+    <a href="MarkReadyForImport?fileid=<%= HttpUtility.UrlEncode(file.Name)%>"><%=file.Name %></a>
     <%
 } 
     %>

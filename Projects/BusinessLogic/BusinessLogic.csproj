@@ -52,7 +52,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="FitsManager.cs" />
     <Compile Include="FITS\FitsFileImporter.cs" />
-    <Compile Include="FITS\FitsFileSystemAccess.cs" />
+    <Compile Include="FITS\FitsFileSystemSystemAccess.cs" />
     <Compile Include="Installer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

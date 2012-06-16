@@ -9,22 +9,22 @@ namespace BusinessLogic.FITS
 {
     public class FitsFileFileImporter : IFitsFileImporter
     {
-        private readonly IFitsFileAccess _fileAccess;
+        private readonly IFitsFileSystemAccess _fileSystemAccess;
         private readonly string _fitsPath;
         private readonly IFitsMapper _fitsMapper;
         private readonly ILog _logger = Logging.Logging.GetLogger("FitsFileFileImporter");
 
-        public FitsFileFileImporter(IFitsFileAccess fileAccess, string fitsPath, IFitsMapper fitsMapper)
+        public FitsFileFileImporter(IFitsFileSystemAccess fileSystemAccess, string fitsPath, IFitsMapper fitsMapper)
         {
 #warning Refactor this so that the IOC provides the fitspath directly to the fileaccess object
-            _fileAccess = fileAccess;
+            _fileSystemAccess = fileSystemAccess;
             _fitsPath = fitsPath;
             _fitsMapper = fitsMapper;
         }
 
         public virtual void ScanForNewFiles()
         {
-            var files = _fileAccess.GetFilesThatAreNotFound(_fitsPath);
+            var files = _fileSystemAccess.GetFilesThatAreNotFound(_fitsPath);
 
             if (files != null)
             {
