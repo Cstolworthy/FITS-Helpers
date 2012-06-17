@@ -13,5 +13,6 @@ namespace Interfaces.FITS
         void SetValue(string columnName, object columnValue);
         void SaveDocument();
         void CreateNewFileImportRequest(FileInfo fileInfo);
+        void SaveNewFileImportRequest(IFileImportRequest request);
     }
 }

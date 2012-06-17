@@ -53,6 +53,8 @@
     <Compile Include="IContainerAccessor.cs" />
     <Compile Include="Marker\IDataAccess.cs" />
     <Compile Include="DTO\IFileImportOptions.cs" />
+    <Compile Include="Marker\IDataObject.cs" />
+    <Compile Include="Marker\IFactory.cs" />
     <Compile Include="Marker\IManager.cs" />
     <Compile Include="Marker\IMapper.cs" />
     <Compile Include="Marker\IService.cs" />

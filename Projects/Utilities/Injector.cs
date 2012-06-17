@@ -12,6 +12,8 @@ namespace Utilities
             container.Register(Classes.FromAssembly(assembly).BasedOn<IDataAccess>().WithService.AllInterfaces());
             container.Register(Classes.FromAssembly(assembly).BasedOn<IManager>().WithService.AllInterfaces());
             container.Register(Classes.FromAssembly(assembly).BasedOn<IService>().WithService.AllInterfaces());
+            container.Register(Classes.FromAssembly(assembly).BasedOn<IFactory>());
+            container.Register(Classes.FromAssembly(assembly).BasedOn<IDataObject>().WithService.AllInterfaces());
             container.Register(Classes.FromAssembly(assembly).BasedOn<IMapper>().WithService.AllInterfaces());
         }
     }

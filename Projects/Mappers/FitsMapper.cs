@@ -44,9 +44,14 @@ namespace Mappers
 
         public void CreateNewFileImportRequest(FileInfo fileInfo)
         {
-            var import = new FileImportRequest {FileNameAndPath = fileInfo.FullName, FoundOn = DateTime.UtcNow};
+//            var import = new FileImportRequest {FileNameAndPath = fileInfo.FullName, FoundOn = DateTime.UtcNow};
 
-            _dbAccess.Save(import);
+//            _dbAccess.Save(import);
+        }
+
+        public void SaveNewFileImportRequest(IFileImportRequest request)
+        {
+            _dbAccess.Save(request);
         }
     }
 }

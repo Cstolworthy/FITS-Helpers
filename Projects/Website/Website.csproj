@@ -65,8 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -130,6 +132,7 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Import\Index.aspx" />
     <Content Include="Views\Import\MarkReadyForImport.aspx" />
+    <Content Include="Views\Import\Success.aspx" />
     <Content Include="Views\Import\Waiting.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
