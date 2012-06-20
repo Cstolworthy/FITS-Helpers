@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using DataAccess.Properties;
 using Interfaces.DataAccess;
 using Interfaces.DTO;
@@ -43,6 +45,11 @@ namespace DataAccess
         public void Save(IFileImportRequest fileRequest)
         {
             _importRequestCollection.Save(fileRequest);
+        }
+
+        public IEnumerable<IFileImportRequest> GetImportRequests()
+        {
+            return _importRequestCollection.FindAll().ToList();
         }
 
         public IEnumerable<IFileImportRequest> FindAllFileImportRequest()

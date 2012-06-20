@@ -21,14 +21,14 @@
     <br />
     <br />
     <h2>
-        Color Mapping</h2>
-    <% for (int i = 2; i < Model.ColumnNames.Count(); i++)
-       {%>
-
-       <%= Html.DropDownList("color"+i, Model.ColumnsAsSelect) %>
-       <%= Html.TextBox("tbColor"+i) %>
-       <br />
-    <%} %>
+<%--        Color Mapping</h2>--%>
+<%--    <% for (int i = 2; i < Model.ColumnNames.Count(); i++)--%>
+<%--       {%>--%>
+<%----%>
+<%--       <%= Html.DropDownList("color"+i, Model.ColumnsAsSelect) %>--%>
+<%--       <%= Html.TextBox("tbColor"+i) %>--%>
+<%--       <br />--%>
+<%--    <%} %>--%>
     <input type="submit" name="saveNewImport" value="Save" />
     <% } %>
 </asp:Content>
