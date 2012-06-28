@@ -19,7 +19,7 @@ namespace TestHarness
 
         private void btnTestImport_Click(object sender, EventArgs e)
         {
-            var dataAccess = new FitsImporterDataAccess();
+            var dataAccess = new FitsImporterRepository();
             
             var fm = new FitsMapper(dataAccess);
 
@@ -28,7 +28,7 @@ namespace TestHarness
 
         private void btnFindAll_Click(object sender, EventArgs e)
         {
-            var dataAccess = new FitsImporterDataAccess();
+            var dataAccess = new FitsImporterRepository();
             var imports = dataAccess.FindAllFileImportRequest();
 
             foreach (var fileImportRequest in imports)

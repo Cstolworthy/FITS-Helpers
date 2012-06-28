@@ -6,7 +6,7 @@ using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace Interfaces.DTO
 {
-    public interface IFileImportRequest : IDataObject
+    public interface IFileImportRequest : IValueObject
     {
         [BsonId(IdGenerator = typeof(BsonObjectIdGenerator))]
         ObjectId Id { get; set; }

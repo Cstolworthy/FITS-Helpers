@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\CommonBin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,20 +45,25 @@
     <Reference Include="System.ServiceProcess" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\IFitsImporterDataAccess.cs" />
+    <Compile Include="DataAccess\IFitsImporterRepository.cs" />
     <Compile Include="DTO\IFileImportRequest.cs" />
     <Compile Include="FITS\IFitsFileSystemAccess.cs" />
     <Compile Include="FITS\IFitsFileImporter.cs" />
-    <Compile Include="FITS\IFitsManager.cs" />
+    <Compile Include="FITS\IFitsContext.cs" />
     <Compile Include="FITS\IFitsMapper.cs" />
     <Compile Include="IContainerAccessor.cs" />
-    <Compile Include="Marker\IDataAccess.cs" />
     <Compile Include="DTO\IFileImportOptions.cs" />
-    <Compile Include="Marker\IDataObject.cs" />
+    <Compile Include="Marker\IAggregateRoot.cs" />
+    <Compile Include="Marker\IContext.cs" />
+    <Compile Include="Marker\IEntity.cs" />
     <Compile Include="Marker\IFactory.cs" />
-    <Compile Include="Marker\IManager.cs" />
     <Compile Include="Marker\IMapper.cs" />
+    <Compile Include="Marker\IPolicy.cs" />
+    <Compile Include="Marker\IRepository.cs" />
     <Compile Include="Marker\IService.cs" />
+    <Compile Include="Marker\IState.cs" />
+    <Compile Include="Marker\IValidationRule.cs" />
+    <Compile Include="Marker\IValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IConsoleApplication.cs" />
     <Compile Include="Services\ServiceWrapper.cs">

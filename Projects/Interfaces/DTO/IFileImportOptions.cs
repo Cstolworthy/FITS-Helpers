@@ -1,6 +1,8 @@
-﻿namespace Interfaces.DTO
+﻿using Interfaces.Marker;
+
+namespace Interfaces.DTO
 {
-    public interface IFileImportOptions
+    public interface IFileImportOptions : IValueObject
     {
         string FilePath { get; set; }
     }

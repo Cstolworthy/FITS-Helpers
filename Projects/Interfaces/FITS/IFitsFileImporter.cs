@@ -5,6 +5,6 @@ namespace Interfaces.FITS
 {
     public interface IFitsFileImporter : IService
     {
-        void ProcessIndividualFile(IFileImportOptions fileOptions);
+        void ProcessIndividualFile(IFileImportRequest fileOptions);
     }
 }

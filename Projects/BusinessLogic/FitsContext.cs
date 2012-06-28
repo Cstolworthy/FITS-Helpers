@@ -9,18 +9,18 @@ using nom.tam.fits;
 
 namespace BusinessLogic
 {
-    public class FitsManager : IFitsManager
+    public class FitsContext : IFitsContext
     {
-        private readonly IFitsImporterDataAccess _importerDataAccess;
+        private readonly IFitsImporterRepository _importerRepository;
 
-        public FitsManager(IFitsImporterDataAccess importerDataAccess)
+        public FitsContext(IFitsImporterRepository importerRepository)
         {
-            _importerDataAccess = importerDataAccess;
+            _importerRepository = importerRepository;
         }
 
         public IEnumerable<IFileImportRequest> GetImportRequests()
         {
-            return _importerDataAccess.GetImportRequests();
+            return _importerRepository.GetImportRequests();
         }
 
         public IEnumerable<string> GetColumnHeaders(FileInfo file)

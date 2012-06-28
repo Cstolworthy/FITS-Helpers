@@ -4,6 +4,7 @@ using System.Linq;
 using DataAccess.Properties;
 using Interfaces.DataAccess;
 using Interfaces.DTO;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Objects;
@@ -11,11 +12,12 @@ using Objects.DTO;
 
 namespace DataAccess
 {
-    public class FitsImporterDataAccess : IFitsImporterDataAccess
+    public class FitsImporterRepository : IFitsImporterRepository
     {
         private readonly MongoServer _mongo;
         private MongoDatabase _database;
         private MongoCollection<IFileImportRequest> _importRequestCollection;
+        private MongoCollection<BsonDocument> _currentCollection;
 
         private static bool _registered = false;
         public static void RegisterBsonTypes()
@@ -24,7 +26,7 @@ namespace DataAccess
             BsonClassMap.RegisterClassMap<FileImportRequest>();
         }
 
-        public FitsImporterDataAccess()
+        public FitsImporterRepository()
         {
             _mongo = MongoServer.Create(Settings.Default.MongoConnection);
             _mongo.Connect();
@@ -32,7 +34,7 @@ namespace DataAccess
             _database = _mongo.GetDatabase(Constants.Database.Name);
             _importRequestCollection = _database.GetCollection<IFileImportRequest>(Constants.FitsImporter.ImportRequestCollectionName);
 
-            lock (typeof(FitsImporterDataAccess))
+            lock (typeof(FitsImporterRepository))
             {
                 if (!_registered)
                 {
@@ -50,6 +52,16 @@ namespace DataAccess
         public IEnumerable<IFileImportRequest> GetImportRequests()
         {
             return _importRequestCollection.FindAll().ToList();
+        }
+
+        public void CreateNewCollection(string fileNameAndPath)
+        {
+            _currentCollection = _database.GetCollection(fileNameAndPath);
+        }
+
+        public void SaveDocumentToOpenCollection(BsonDocument document)
+        {
+            _currentCollection.Save(document);
         }
 
         public IEnumerable<IFileImportRequest> FindAllFileImportRequest()

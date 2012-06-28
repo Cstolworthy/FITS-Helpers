@@ -13,14 +13,14 @@ namespace Website.Controllers
     {
         private readonly IFitsMapper _fitsMapper;
         private IFitsFileSystemAccess _fileSystemAccess;
-        private IFitsManager _manager;
+        private IFitsContext _context;
         private readonly FileImportRequestFactory _importRequestFactory;
 
-        public ImportController(IFitsMapper fitsMapper, IFitsFileSystemAccess fileSystemAccess, IFitsManager manager, FileImportRequestFactory importRequestFactory)
+        public ImportController(IFitsMapper fitsMapper, IFitsFileSystemAccess fileSystemAccess, IFitsContext context, FileImportRequestFactory importRequestFactory)
         {
             _fitsMapper = fitsMapper;
             _fileSystemAccess = fileSystemAccess;
-            _manager = manager;
+            _context = context;
             _importRequestFactory = importRequestFactory;
         }
 
@@ -47,7 +47,7 @@ namespace Website.Controllers
 
             var theFile = files.Where(f => f.Name == fileName).FirstOrDefault();
 
-            var columns = _manager.GetColumnHeaders(theFile);
+            var columns = _context.GetColumnHeaders(theFile);
 
             MarkReadyForImportModel model = new MarkReadyForImportModel();
 

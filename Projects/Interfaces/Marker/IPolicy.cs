@@ -1,6 +1,6 @@
 namespace Interfaces.Marker
 {
-    public interface IMapper
+    public interface IPolicy : IService
     {
         
     }

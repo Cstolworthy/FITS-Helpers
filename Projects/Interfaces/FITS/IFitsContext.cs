@@ -5,7 +5,7 @@ using Interfaces.Marker;
 
 namespace Interfaces.FITS
 {
-    public interface IFitsManager : IManager
+    public interface IFitsContext : IContext
     {
         IEnumerable<string> GetColumnHeaders(FileInfo file);
         IEnumerable<IFileImportRequest> GetImportRequests();

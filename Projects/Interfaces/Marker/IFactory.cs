@@ -1,6 +1,10 @@
-﻿namespace Interfaces.Marker
+namespace Interfaces.Marker
 {
-    public interface IFactory
+    /// <summary>
+    /// Factories create entities, value objects, or collections.
+    /// </summary>
+    public interface IFactory : IService
     {
+        
     }
 }
