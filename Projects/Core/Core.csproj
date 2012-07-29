@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{80804ACF-F709-44A1-8CE5-BF4A4AA9D85E}</ProjectGuid>
+    <ProjectGuid>{7A43FEAC-810D-4118-9E0A-FC66AB2D4506}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Interfaces</RootNamespace>
-    <AssemblyName>Interfaces</AssemblyName>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Master\</SolutionDir>
@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\Master\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\Master\packages\Castle.Windsor.3.0.0.4001\lib\net40\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\Master\packages\mongocsharpdriver.1.5\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -48,16 +54,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collections\CelestialSphereCollection.cs" />
-    <Compile Include="Collections\ColorIntensityCollection.cs" />
-    <Compile Include="ICelestialSphereSection.cs" />
-    <Compile Include="ICelestialSphereSurvey.cs" />
-    <Compile Include="Marker\IAggregateRoot.cs" />
-    <Compile Include="Marker\IValueObject.cs" />
+    <Compile Include="Exceptions\UnregisteredObjectTypeException.cs" />
+    <Compile Include="Factories\ServiceFactory.cs" />
+    <Compile Include="Installer.cs" />
+    <Compile Include="MongoClassMapper.cs" />
+    <Compile Include="Objects\CelestialSphereSection.cs" />
+    <Compile Include="Objects\CelestialSphereSurvey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Objects\Collections\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{80804ACF-F709-44A1-8CE5-BF4A4AA9D85E}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{CF4C88EB-C42F-49FC-A3A2-0E2A7C5A5ADC}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
