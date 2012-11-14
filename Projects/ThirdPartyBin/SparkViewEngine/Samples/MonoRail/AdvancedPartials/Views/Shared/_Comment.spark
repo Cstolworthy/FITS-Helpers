@@ -1,4 +1,0 @@
-<content:comments>
-  <dt>${Caption}</dt>
-  <dd><render/></dd>
-</content:comments>
